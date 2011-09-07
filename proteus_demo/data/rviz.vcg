@@ -1,0 +1,47 @@
+Background\ ColorR=0.52549
+Background\ ColorG=0.505882
+Background\ ColorB=0.505882
+Fixed\ Frame=/base_laser_link
+Target\ Frame=<Fixed Frame>
+Image.Enabled=1
+Image.Image\ Topic=/ATRV/CameraMain
+Image.Transport\ Hint=raw
+Laser\ Scan.Alpha=1
+Laser\ Scan.Billboard\ Size=0.01
+Laser\ Scan.Color\ Transformer=Axis
+Laser\ Scan.Decay\ Time=0
+Laser\ Scan.Enabled=1
+Laser\ Scan.Position\ Transformer=XYZ
+Laser\ Scan.Selectable=1
+Laser\ Scan.Style=0
+Laser\ Scan.Topic=/ATRV/Sick
+Laser\ Scan..AxisAutocompute\ Value\ Bounds=1
+Laser\ Scan..AxisAxis=0
+Laser\ Scan..AxisMax\ Value=8.88602
+Laser\ Scan..AxisMin\ Value=-3.30137e-07
+Laser\ Scan..AxisUse\ Fixed\ Frame=1
+Laser\ Scan..Flat\ ColorColorR=1
+Laser\ Scan..Flat\ ColorColorG=1
+Laser\ Scan..Flat\ ColorColorB=1
+Laser\ Scan..IntensityAutocompute\ Intensity\ Bounds=1
+Laser\ Scan..IntensityMax\ ColorR=1
+Laser\ Scan..IntensityMax\ ColorG=1
+Laser\ Scan..IntensityMax\ ColorB=1
+Laser\ Scan..IntensityMax\ Intensity=4096
+Laser\ Scan..IntensityMin\ ColorR=0
+Laser\ Scan..IntensityMin\ ColorG=0
+Laser\ Scan..IntensityMin\ ColorB=0
+Laser\ Scan..IntensityMin\ Intensity=0
+Tool\ 2D\ Nav\ GoalTopic=goal
+Tool\ 2D\ Pose\ EstimateTopic=initialpose
+Camera\ Type=rviz::OrbitViewController
+Camera\ Config=0.218776 3.46869 73.5808 6.28448 1.00476 -4.45749
+Property\ Grid\ State=selection=;expanded=.Global Options,.Global StatusTopStatus,Laser Scan.Enabled,Laser Scan.Enabled.Laser Scan.StatusTopStatus,Image.Enabled;scrollpos=0,0;splitterpos=150,288;ispageselected=1
+[Display0]
+Name=Laser Scan
+Package=rviz
+ClassName=rviz::LaserScanDisplay
+[Display1]
+Name=Image
+Package=rviz
+ClassName=rviz::ImageDisplay
