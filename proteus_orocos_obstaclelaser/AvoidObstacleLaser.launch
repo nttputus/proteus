@@ -1,0 +1,3 @@
+<launch>
+<node name="AvoidObstacleLaser" pkg="ocl" type="deployer-gnulinux" args="-s $(find proteus_orocos_obstaclelaser)/AvoidObstacleLaser.xml -linfo --" output="screen"/>
+</launch>

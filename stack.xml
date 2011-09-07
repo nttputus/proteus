@@ -1,0 +1,9 @@
+<stack>
+  <description brief="proteus">proteus</description>
+  <author>Maintained by pierriko</author>
+  <license>BSD</license>  
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/proteus</url>
+  <depend stack="ros" />
+
+</stack>

@@ -1,0 +1,4 @@
+<launch>
+  <node name="AvoidObstacleIR" pkg="proteus_demo" type="AvoidObstacleIR.py" respawn="false" output="screen"/>
+</launch>
+
