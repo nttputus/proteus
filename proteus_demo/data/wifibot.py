@@ -1,49 +1,55 @@
 from morse.builder.morsebuilder import *
 
 # Append ATRV robot to the scene
-wifibot = Robot('atrv')
+atrv = Robot('atrv')
 
 # Append an actuator
-motion = Controller('morse_vw_control')
-motion.translate(z=0.3)
-wifibot.append(motion)
+motion = Actuator('v_omega')
+motion.translate(z = 0.3)
+atrv.append(motion)
 
 # Append an odometry sensor
-odometry = Sensor('morse_odometry')
-odometry.translate(x=-0.1, z=0.83)
-wifibot.append(odometry)
-
-# Append a proximity sensor
-proximity = Sensor('morse_proximity')
-proximity.translate(x=-0.2, z=0.83)
-wifibot.append(proximity)
+odometry = Sensor('odometry')
+odometry.translate(x = -0.1, z = 0.83)
+atrv.append(odometry)
 
 # Append a Pose sensor (GPS + Gyroscope)
-pose = Sensor('morse_pose')
-pose.translate(z=0.83)
-wifibot.append(pose)
+pose = Sensor('pose')
+pose.translate(x = -0.25, z = 0.83)
+atrv.append(pose)
 
 # Append a sick laser
-sick = Sensor('morse_sick_180')
-sick.translate(x=0.18,z=0.94)
-wifibot.append(sick)
+sick = Sensor('sick')
+sick.translate(x = 0.18, z = 0.94)
+atrv.append(sick)
 sick.properties(resolution = 1)
 
 # Append a camera
-cam = Sensor('morse_camera')
-cam.translate(x=0.3,z=1.1)
-wifibot.append(cam)
-cam.properties(cam_width = 128, cam_height = 128)
+camera = Sensor('video_camera')
+camera.translate(x = 0.3, z = 0.96)
+atrv.append(camera)
+camera.properties(cam_width = 128, cam_height = 128)
 
-# Insert the middleware object
-ros = Middleware('ros_empty')
+# Append infrared sensors (left and right)
+infrared_r = Sensor('infrared')
+infrared_r.translate(x = 0.6, y = -0.15,z = 0.2)
+infrared_r.name = "InfraredR"
+atrv.append(infrared_r)
+infrared_l = Sensor('infrared')
+infrared_l.translate(x = 0.6, y = 0.15,z = 0.2)
+infrared_l.name = "InfraredL"
+atrv.append(infrared_l)
 
 # Configure the middlewares
-ros.configure(motion)
-ros.configure(odometry)
-ros.configure(proximity)
-ros.configure(pose)
-ros.configure(sick)
-ros.configure(cam)
+motion.configure_mw('ros')
+odometry.configure_mw('ros')
+pose.configure_mw('ros')
+sick.configure_mw('ros')
+camera.configure_mw('ros')
+infrared_r.configure_mw('ros')
+infrared_l.configure_mw('ros')
 
+# Select the environement
+env = Environment('indoors-1/indoor-1')
+env.aim_camera([1.0470, 0, 0.7854])
 
