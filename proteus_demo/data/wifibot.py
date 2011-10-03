@@ -1,5 +1,8 @@
 from morse.builder.morsebuilder import *
 
+# in case you launche this script with a .blend file
+is_env_loaded = len(bpy.data.objects) > 0
+
 # Append ATRV robot to the scene
 atrv = Robot('atrv')
 
@@ -22,13 +25,14 @@ atrv.append(pose)
 sick = Sensor('sick')
 sick.translate(x = 0.18, z = 0.94)
 atrv.append(sick)
-sick.properties(resolution = 1)
+# sick.properties(scan_window = 270, resolution = .25)
+sick.properties(scan_window = 182, resolution = 1)
 
 # Append a camera
 camera = Sensor('video_camera')
 camera.translate(x = 0.3, z = 0.96)
 atrv.append(camera)
-camera.properties(cam_width = 128, cam_height = 128)
+camera.properties(cam_width = 128, cam_height = 128, Vertical_Flip = True)
 
 # Append infrared sensors (left and right)
 infrared_r = Sensor('infrared')
@@ -50,6 +54,9 @@ infrared_r.configure_mw('ros')
 infrared_l.configure_mw('ros')
 
 # Select the environement
-env = Environment('indoors-1/indoor-1')
+if is_env_loaded:
+    env = Environment()
+else:
+    env = Environment('indoors-1/indoor-1')
 env.aim_camera([1.0470, 0, 0.7854])
 
