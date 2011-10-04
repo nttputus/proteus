@@ -1,0 +1,19 @@
+<package>
+  <description brief="proteus_java">
+
+     proteus_java
+
+  </description>
+  <author>pierriko</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/proteus_java</url>
+  <depend package="rosjava"/>
+  <depend package="std_msgs" />
+  <depend package="sensor_msgs" />
+  <depend package="geometry_msgs" />
+  <depend package="nav_msgs" />
+
+</package>
+
+
