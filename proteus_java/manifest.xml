@@ -13,6 +13,9 @@
   <depend package="sensor_msgs" />
   <depend package="geometry_msgs" />
   <depend package="nav_msgs" />
+  <export>
+    <rosjava-pathelement location="dist/proteus.jar" built="true" />
+  </export>
 
 </package>
 

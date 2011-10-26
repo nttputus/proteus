@@ -7,6 +7,7 @@
   <property name="dist" location="dist" />
   <property name="build" location="build" />
   <property name="src" location="src" />
+  <property name="jar" location="${dist}/proteus.jar" />
 
   <path id="classpath">
     <pathelement path="${ros.classpath}" />
@@ -14,7 +15,7 @@
 
   <echo message="${toString:classpath}" />
 
-  <target name="default" depends="init, compile" />
+  <target name="default" depends="init, compile, jar" />
 
   <target name="init">
     <fail unless="ros.classpath" message="ros.properties is missing.  Please type 'rosmake' first "/>
@@ -23,11 +24,16 @@
   </target>
 
   <target name="compile" depends="init">
-
     <javac destdir="${build}">
       <classpath refid="classpath" />
       <src path="${src}" />
     </javac>
+  </target>
+
+  <target name="jar" depends="compile">
+    <jar destfile="${jar}">
+      <fileset dir="${build}" />
+    </jar>
   </target>
 
   <target name="clean">
