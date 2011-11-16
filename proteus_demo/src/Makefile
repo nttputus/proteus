@@ -9,5 +9,5 @@ all:
 	$(CC) $(CFLAGS) -shared rawlasertwistmodule.o rawlasertwist_wrap.o -o _rawlasertwist.so
 
 clean:
-	rm -f *.o *.so *_wrap.c *.pyc
+	rm -f *.o *.so *_wrap.c *.pyc rawlasertwist.py
 

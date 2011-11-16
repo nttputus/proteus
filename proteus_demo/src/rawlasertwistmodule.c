@@ -20,11 +20,10 @@ accumulate(float * ranges, int start, int end)
 }
 
 float * 
-rawlasertwist(float * ranges, float angle_min, float angle_max, float angle_increment) 
+rawlasertwist(float * ranges, int len)
 {
     float * velocity; // v,omega
     int halt = 0;
-    int len = (angle_max - angle_min)/angle_increment;
     int mid = len / 2;
     velocity = malloc(2*sizeof(float));
     velocity[1] = 0.0;
@@ -35,7 +34,7 @@ rawlasertwist(float * ranges, float angle_min, float angle_max, float angle_incr
     }
 
     for (int i = mid - 15; i < mid + 15; i++) {
-        if (ranges[i] > 2) {
+        if (ranges[i] < 2) {
             halt = 1;
             break;
         }
