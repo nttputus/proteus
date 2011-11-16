@@ -13,8 +13,9 @@ double
 accumulate(float * ranges, int start, int end) 
 {
     double sum = 0.0;
-    for (int i = start; i < end; i++) {
-        sum += ranges[i];
+    int angle;
+    for (angle = start; angle < end; angle++) {
+        sum += ranges[angle];
     }
     return sum;
 }
@@ -22,34 +23,32 @@ accumulate(float * ranges, int start, int end)
 float * 
 rawlasertwist(float * ranges, int len)
 {
-    float * velocity; // v,omega
-    int halt = 0;
-    int mid = len / 2;
-    velocity = malloc(2*sizeof(float));
-    velocity[1] = 0.0;
-    velocity[0] = 0.0;
+    float * velocity = (float *) calloc(2, sizeof(float)); // v,omega
 
-    if (len < 30) {
-        return velocity;
-    }
-
-    for (int i = mid - 15; i < mid + 15; i++) {
-        if (ranges[i] < 2) {
-            halt = 1;
-            break;
+    if (len >= 30) {
+        int halt = 0;
+        int mid = len / 2;
+        int angle;
+        // halt if an object is less than 2m in a 30deg angle
+        for (angle = mid - 15; angle < mid + 15; angle++) {
+            if (ranges[angle] < 2) {
+                halt = 1;
+                break;
+            }
         }
-    }
-    if (halt != 0) {
-        double midL, midR;
-        midL = accumulate(ranges, 0, mid);
-        midR = accumulate(ranges, mid, len);
-        if (midL > midR) {
-            velocity[1] = -1.0;
+        if (halt != 0) {
+            double midL, midR;
+            midL = accumulate(ranges, 0, mid);
+            midR = accumulate(ranges, mid, len);
+            // we go to the highest-range side scanned
+            if (midL > midR) {
+                velocity[1] = -1.0;
+            } else {
+                velocity[1] = 1.0;
+            }
         } else {
-            velocity[1] = 1.0;
+            velocity[0] = 1.0;
         }
-    } else {
-        velocity[0] = 1.0;
     }
     return velocity;
 }

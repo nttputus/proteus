@@ -14,7 +14,7 @@
     if (PyNumber_Check(o)) {
       $1[i] = (float) PyFloat_AsDouble(o);
     } else {
-      PyErr_SetString(PyExc_ValueError,"Sequence elements must be numbers");      
+      PyErr_SetString(PyExc_ValueError,"Sequence elements must be numbers");
       free($1);
       return NULL;
     }
@@ -22,7 +22,7 @@
 }
 
 %typemap(freearg) float * {
-   if ($1) free($1);
+  if ($1) free($1);
 }
 
 %typemap(out) float * {
@@ -34,6 +34,5 @@
   }
 }
 
-extern float * 
-rawlasertwist(float * ranges, int len);
+float * rawlasertwist(float * ranges, int len);
 
