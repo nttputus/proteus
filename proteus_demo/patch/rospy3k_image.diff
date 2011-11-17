@@ -1,0 +1,17 @@
+--- _Image.py	2011-11-06 12:58:52.000000000 +0700
++++ /opt/ros/electric/stacks/common_msgs/sensor_msgs/src/sensor_msgs/msg/_Image.py	2011-11-17 11:29:08.250389571 +0700
+@@ -115,12 +115,12 @@
+       buff.write(_struct_3I.pack(_x.header.seq, _x.header.stamp.secs, _x.header.stamp.nsecs))
+       _x = self.header.frame_id
+       length = len(_x)
+-      buff.write(struct.pack('<I%ss'%length, length, _x))
++      buff.write(struct.pack('<I%ss'%length, length, _x.encode("utf-8")))
+       _x = self
+       buff.write(_struct_2I.pack(_x.height, _x.width))
+       _x = self.encoding
+       length = len(_x)
+-      buff.write(struct.pack('<I%ss'%length, length, _x))
++      buff.write(struct.pack('<I%ss'%length, length, _x.encode("utf-8")))
+       _x = self
+       buff.write(_struct_BI.pack(_x.is_bigendian, _x.step))
+       _x = self.data
