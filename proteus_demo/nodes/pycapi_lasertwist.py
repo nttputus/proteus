@@ -18,8 +18,7 @@ rosrun proteus_demo pycapi_lasertwist.py cmd:=/ATRV/Motion_Controller laser:=/AT
 
 def handle_laser(msg):
     cmd = Twist()
-    velocity = rawlasertwist.rawlasertwist(msg.ranges, msg.angle_min, msg.angle_max, msg.angle_increment)
-    print(velocity)
+    velocity = rawlasertwist.rawlasertwist(msg.ranges)
     cmd.linear.x = velocity[0]
     cmd.angular.z = velocity[1]
     topic.publish(cmd)

@@ -2,22 +2,23 @@
 
 %typemap(in) (float * ranges, int len) {
   int i, size;
-  if (!PySequence_Check($input)) {
-    PyErr_SetString(PyExc_ValueError,"Expected a sequence");
-    return NULL;
-  }
+  // win 3ms / 1000 run without Check test
+  //if (!PySequence_Check($input)) {
+  //  PyErr_SetString(PyExc_ValueError,"Expected a sequence");
+  //  return NULL;
+  //}
   size = PySequence_Length($input);
   $1 = (float *) malloc(size*sizeof(float));
   $2 = size;
   for (i = 0; i < size; i++) {
     PyObject *o = PySequence_GetItem($input,i);
-    if (PyNumber_Check(o)) {
-      $1[i] = (float) PyFloat_AsDouble(o);
-    } else {
-      PyErr_SetString(PyExc_ValueError,"Sequence elements must be numbers");
-      free($1);
-      return NULL;
-    }
+    //if (PyNumber_Check(o)) {
+    $1[i] = (float) PyFloat_AsDouble(o);
+    //} else {
+    //  PyErr_SetString(PyExc_ValueError,"Sequence elements must be numbers");
+    //  free($1);
+    //  return NULL;
+    //}
   }
 }
 
