@@ -1,7 +1,7 @@
 Background\ ColorR=0.52549
 Background\ ColorG=0.505882
 Background\ ColorB=0.505882
-Fixed\ Frame=/base_laser_link
+Fixed\ Frame=/base_link
 Target\ Frame=<Fixed Frame>
 Image.Enabled=1
 Image.Image\ Topic=/ATRV/CameraMain
@@ -17,13 +17,14 @@ Laser\ Scan.Style=0
 Laser\ Scan.Topic=/ATRV/Sick
 Laser\ Scan..AxisAutocompute\ Value\ Bounds=1
 Laser\ Scan..AxisAxis=0
-Laser\ Scan..AxisMax\ Value=8.88602
-Laser\ Scan..AxisMin\ Value=-3.30137e-07
+Laser\ Scan..AxisMax\ Value=8.38345
+Laser\ Scan..AxisMin\ Value=-4.25482e-07
 Laser\ Scan..AxisUse\ Fixed\ Frame=1
 Laser\ Scan..Flat\ ColorColorR=1
 Laser\ Scan..Flat\ ColorColorG=1
 Laser\ Scan..Flat\ ColorColorB=1
 Laser\ Scan..IntensityAutocompute\ Intensity\ Bounds=1
+Laser\ Scan..IntensityChannel\ Name=intensity
 Laser\ Scan..IntensityMax\ ColorR=1
 Laser\ Scan..IntensityMax\ ColorG=1
 Laser\ Scan..IntensityMax\ ColorB=1
@@ -32,11 +33,20 @@ Laser\ Scan..IntensityMin\ ColorR=0
 Laser\ Scan..IntensityMin\ ColorG=0
 Laser\ Scan..IntensityMin\ ColorB=0
 Laser\ Scan..IntensityMin\ Intensity=0
+Laser\ Scan..IntensityUse\ full\ RGB\ spectrum=0
+TF.All\ Enabled=1
+TF.Enabled=1
+TF.Frame\ Timeout=15
+TF.Marker\ Scale=1
+TF.Show\ Arrows=1
+TF.Show\ Axes=1
+TF.Show\ Names=1
+TF.Update\ Interval=0.05
 Tool\ 2D\ Nav\ GoalTopic=goal
 Tool\ 2D\ Pose\ EstimateTopic=initialpose
 Camera\ Type=rviz::OrbitViewController
-Camera\ Config=0.218776 3.46869 73.5808 6.28448 1.00476 -4.45749
-Property\ Grid\ State=selection=;expanded=.Global Options,.Global StatusTopStatus,Laser Scan.Enabled,Laser Scan.Enabled.Laser Scan.StatusTopStatus,Image.Enabled;scrollpos=0,0;splitterpos=150,288;ispageselected=1
+Camera\ Config=0.218776 3.46869 66.4767 6.28448 1.00476 -4.45749
+Property\ Grid\ State=selection=Laser Scan.Enabled;expanded=.Global Options,Laser Scan.Enabled,Image.Enabled,TF.Enabled,TF.Enabled.TF.Frames,TF./base_laser_link/base_laser_link,TF./base_link/base_link,TF.Enabled.TF.Tree,TF./base_linkTree/base_link,TF./base_laser_linkTree/base_laser_link;scrollpos=0,36;splitterpos=207,418;ispageselected=1
 [Display0]
 Name=Laser Scan
 Package=rviz
@@ -45,3 +55,10 @@ ClassName=rviz::LaserScanDisplay
 Name=Image
 Package=rviz
 ClassName=rviz::ImageDisplay
+[Display2]
+Name=TF
+Package=rviz
+ClassName=rviz::TFDisplay
+[TF.]
+base_laser_linkEnabled=1
+base_linkEnabled=1
