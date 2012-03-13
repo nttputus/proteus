@@ -1,11 +1,4 @@
-from morse.builder.morsebuilder import *
-
-#environment = 'land-1/trees' # outdoor
-environment = 'indoors-1/indoor-1' # indoor
-
-# in case you launche this script with a .blend file
-if len(bpy.data.objects) > 0:
-    environment = None
+from morse.builder import *
 
 # Append ATRV robot to the scene
 atrv = Robot('atrv')
@@ -64,6 +57,6 @@ infrared_r.configure_mw('ros')
 infrared_l.configure_mw('ros')
 
 # Select the environement
-env = Environment(environment)
+env = Environment('lab2.blend')
 env.aim_camera([1.0470, 0, 0.7854])
 
