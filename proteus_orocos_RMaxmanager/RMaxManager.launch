@@ -1,0 +1,3 @@
+<launch>
+<node name="RMaxManager" pkg="ocl" type="deployer-gnulinux" args="-s $(find proteus_orocos_RMaxmanager)/RMaxManager.xml -linfo --" output="screen"/>
+</launch>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "cpf.dtd">
+<properties>
+<simple name="Import" type="string"><value>proteus_orocos_RMaxmanager</value></simple>
+
+<struct name="ROSConPointOut" type="ConnPolicy">
+  <simple name="type" type="short"><value>0</value></simple><!-- type of connection: 0 means Data -->
+  <simple name="size" type="short"><value>1</value></simple><!-- buffer size -->
+  <simple name="transport" type="short"><value>3</value></simple><!--3 means ROS-->
+  <simple name="name_id" type="string"><value>/RMAX/Motion_Controller</value></simple><!-- topic name -->
+</struct>
+<struct name="ROSConImageIn" type="ConnPolicy">
+  <simple name="type" type="short"><value>0</value></simple><!-- type of connection: 0 means Data -->
+  <simple name="size" type="short"><value>1</value></simple><!-- buffer size -->
+  <simple name="transport" type="short"><value>3</value></simple><!--3 means ROS-->
+  <simple name="name_id" type="string"><value>/RMAX/CameraMain/image</value></simple><!-- topic name -->
+</struct>
+<struct name="ROSConCameraInfoIn" type="ConnPolicy">
+  <simple name="type" type="short"><value>0</value></simple><!-- type of connection: 0 means Data -->
+  <simple name="size" type="short"><value>1</value></simple><!-- buffer size -->
+  <simple name="transport" type="short"><value>3</value></simple><!--3 means ROS-->
+  <simple name="name_id" type="string"><value>/RMAX/CameraMain/camera_info</value></simple><!-- topic name -->
+</struct>
+<struct name="ROSConGyroscopeIn" type="ConnPolicy">
+  <simple name="type" type="short"><value>0</value></simple><!-- type of connection: 0 means Data -->
+  <simple name="size" type="short"><value>1</value></simple><!-- buffer size -->
+  <simple name="transport" type="short"><value>3</value></simple><!--3 means ROS-->
+  <simple name="name_id" type="string"><value>/RMAX/Gyroscope</value></simple><!-- topic name -->
+</struct>
+<struct name="ROSConGPSIn" type="ConnPolicy">
+  <simple name="type" type="short"><value>0</value></simple><!-- type of connection: 0 means Data -->
+  <simple name="size" type="short"><value>1</value></simple><!-- buffer size -->
+  <simple name="transport" type="short"><value>3</value></simple><!--3 means ROS-->
+  <simple name="name_id" type="string"><value>/RMAX/GPS</value></simple><!-- topic name -->
+</struct>
+
+<struct name="Manager" type="RMaxManager">
+  <struct name="Activity" type="PeriodicActivity">
+    <simple name="Period" type="double"><value>1</value></simple>
+    <simple name="Priority" type="short"><value>0</value></simple>
+    <simple name="Scheduler" type="string"><value>ORO_SCHED_RT</value></simple>
+  </struct>
+  <simple name="AutoConf" type="boolean"><value>1</value></simple>
+  <simple name="AutoStart" type="boolean"><value>1</value></simple>
+  <struct name="Ports" type="PropertyBag">
+    <simple name="point_out" type="string"><value> ROSConPointOut </value></simple>
+    <simple name="image_in" type="string"><value> ROSConImageIn </value></simple>
+    <simple name="camera_info_in" type="string"><value> ROSConCameraInfoIn </value></simple>
+    <simple name="gyroscope_in" type="string"><value> ROSConGyroscopeIn </value></simple>
+    <simple name="gps_in" type="string"><value> ROSConGPSIn </value></simple>
+  </struct>
+</struct>
+
+</properties>
+
